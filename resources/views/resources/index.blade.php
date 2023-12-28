@@ -4,8 +4,8 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
-                <h2>Resource List</h2>
-                <a href="{{route('resources.create')}}" class="btn btn-sm btn-primary">Add New Resource</a>
+                <h2>{{__('trans.Resource List')}}</h2>
+                <a href="{{route('resources.create')}}" class="btn btn-sm btn-primary">{{__('trans.Add New Resource')}}</a>
             </div>
         </div>
         <audio id="audioPlayer" controls style="display:none;"></audio>
@@ -14,10 +14,10 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                     <tr>
-                        <th class="text-start">Name</th>
-                        <th class="text-center">Image</th>
-                        <th class="text-center">Music</th>
-                        <th class="text-center">Auto voiceover</th>
+                        <th class="text-start">{{__('trans.Name')}}</th>
+                        <th class="text-center">{{__('trans.Image')}}</th>
+                        <th class="text-center">{{__('trans.Music')}}</th>
+                        <th class="text-center">{{__('trans.Auto Voiceover')}}</th>
                         <th class="text-end"></th>
                     </tr>
                     </thead>
@@ -51,10 +51,10 @@
                             </td>
                             <td class="text-end">
                                 <a href="{{ route('resources.edit', $resource->id) }}" class="btn btn-sm btn-success">
-                                    <i class="fas fa-edit"></i> Update
+                                    <i class="fas fa-edit"></i> {{__('trans.Update')}}
                                 </a>
                                 <button onclick="confirmDelete({{ $resource->id }})" class="btn btn-sm btn-danger">
-                                    <i class="fas fa-trash-alt"></i> Delete
+                                    <i class="fas fa-trash-alt"></i> {{__('trans.Delete')}}
                                 </button>
                                 <form id="delete-form-{{ $resource->id }}"
                                       action="{{ route('resources.destroy', $resource->id) }}" method="POST"

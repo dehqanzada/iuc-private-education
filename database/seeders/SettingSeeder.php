@@ -39,7 +39,7 @@ class SettingSeeder extends Seeder
                 'show_style' => false,
             ],
             [
-                'name' => 'complex mode',
+                'name' => 'Complex mode',
                 'status' => false,
                 'font_style' => 'serif',
                 'font_color' => 'red',

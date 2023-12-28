@@ -40,7 +40,7 @@ class ResourceGroupController extends Controller
         $student->save();
 
         return redirect()->route('resource-groups.index')
-            ->with('success', 'Successfully recorded.');
+            ->with('success', __('trans.Successfully recorded'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ResourceGroupController extends Controller
         $student->save();
 
         return redirect()->route('resource-groups.index')
-            ->with('success', 'Successfully updated.');
+            ->with('success', __('trans.Successfully updated'));
     }
 
     /**
@@ -92,6 +92,6 @@ class ResourceGroupController extends Controller
         $resourceGroup->delete();
 
         return redirect()->route('resource-groups.index')
-            ->with('success', 'Successfully deleted.');
+            ->with('success', __('trans.Successfully deleted'));
     }
 }

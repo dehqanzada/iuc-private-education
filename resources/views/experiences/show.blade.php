@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6 col-md-6 text-end">
                 <h3>
-                    <a href="{{route('home')}}" class="btn btn-sm btn-secondary">Back</a>
+                    <a href="{{route('home')}}" class="btn btn-sm btn-secondary">{{__('trans.Back')}}</a>
                 </h3>
             </div>
         </div>
@@ -25,7 +25,7 @@
                             <form class="row align-items-center" action="{{ route('getReports', [$student->id, $group->id]) }}"
                                   method="get">
                                 <div class="col">
-                                    <label for="studentId" class="visually-hidden">Öğrenci Seçin</label>
+                                    <label for="studentId" class="visually-hidden">{{__('trans.Choose Student')}}</label>
                                     <select name="studentId" id="studentId" class="form-select">
                                         @foreach($students ?? [] as $stdnt)
                                             <option
@@ -34,7 +34,7 @@
                                     </select>
                                 </div>
                                 <div class="col">
-                                    <label for="groupId" class="visually-hidden">Grup Seçin</label>
+                                    <label for="groupId" class="visually-hidden">{{__('trans.Choose Group')}}</label>
                                     <select name="groupId" id="groupId" class="form-select">
                                         @foreach($groups ?? [] as $grp)
                                             <option
@@ -43,7 +43,7 @@
                                     </select>
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary">Getir</button>
+                                    <button type="submit" class="btn btn-primary">{{__('trans.Search')}}</button>
                                 </div>
                             </form>
                         </div>

@@ -40,7 +40,7 @@ class SettingController extends Controller
     public function show(Setting $setting)
     {
         $this->toggleStatus($setting);
-        return redirect()->route('settings.index')->with('success', 'Successfully changed.');
+        return redirect()->route('settings.index')->with('success', __('trans.Successfully changed'));
     }
 
     /**
@@ -49,7 +49,7 @@ class SettingController extends Controller
     public function edit(Setting $setting)
     {
         $this->toggleStatus($setting);
-        return redirect()->route('settings.index')->with('success', 'Successfully changed.');
+        return redirect()->route('settings.index')->with('success', __('trans.Successfully changed'));
     }
 
     private function toggleStatus(Setting $setting)
@@ -81,7 +81,7 @@ class SettingController extends Controller
             'font_color' => $request->color,
             'font_size' => $request->size,
         ]);
-        return redirect()->route('settings.index')->with('success', 'Successfully updated.');
+        return redirect()->route('settings.index')->with('success', __('trans.Successfully updated'));
     }
 
 }

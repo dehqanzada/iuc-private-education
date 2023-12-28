@@ -87,7 +87,7 @@ class ExamController extends Controller
         ])
             ->delete();
         return redirect()->route('exams.index')
-            ->with('success', 'Successfully deleted.');
+            ->with('success', __('trans.Successfully deleted'));
     }
 
 }

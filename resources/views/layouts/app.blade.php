@@ -78,29 +78,29 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('students.index') }}">
-                                        Students
+                                        {{__('trans.Students')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('exams.index') }}">
-                                        Ongoing Examination
+                                        {{__('trans.Ongoing Examination')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('resource-groups.index') }}">
-                                        Tutorial groups
+                                        {{__('trans.Tutorial groups')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('settings.index') }}">
-                                        Settings
+                                        {{__('trans.Settings')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('resources.index') }}">
-                                        Resources
+                                        {{__('trans.Resources')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{__('trans.Logout')}}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -121,13 +121,14 @@
     <script>
         function confirmDelete(id) {
             Swal.fire({
-                title: 'Are you sure?',
-                text: "Are you sure you want to delete this ?",
+                title: '{{__("trans.Are you sure?")}}',
+                text: "{{__("trans.Are you sure you want to delete this?")}}",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: '{{__("trans.Yes, delete it!")}}',
+                cancelButtonText: '{{__("trans.Cancel")}}'
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('delete-form-' + id).submit();
@@ -140,10 +141,10 @@
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
-                    title: 'Successfully!',
+                    title: '{{__("trans.Successfully")}}!',
                     text: "{{ session('success') }}",
                     icon: 'success',
-                    confirmButtonText: 'Ok'
+                    confirmButtonText: '{{__("trans.Okay")}}'
                 });
             });
         </script>
@@ -153,10 +154,10 @@
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
-                    title: 'Unsuccessfully!',
+                    title: '{{__("trans.Unsuccessfully")}}!',
                     text: "{{ session('error') }}",
                     icon: 'error',
-                    confirmButtonText: 'Ok'
+                    confirmButtonText: '{{__("trans.Okay")}}'
                 });
             });
         </script>

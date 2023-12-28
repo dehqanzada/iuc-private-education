@@ -4,8 +4,8 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
-                <h2>Resource Groups</h2>
-                <a href="{{route('resource-groups.create')}}" class="btn btn-sm btn-primary">Add New Resource Groups</a>
+                <h2>{{__('trans.Resource Groups')}}</h2>
+                <a href="{{route('resource-groups.create')}}" class="btn btn-sm btn-primary">{{__('trans.Add New Resource Groups')}}</a>
             </div>
         </div>
 
@@ -29,13 +29,13 @@
                         <div class="card-footer bg-white">
                             <div class="btn-group" role="group" aria-label="Resource group actions" style="width: 100%;">
                                 <a href="{{ route('resource-groups.show', $resourceGroup->id) }}" class="btn btn-outline-primary" style="width: 50%;">
-                                    <i class="fas fa-edit"></i> Add Item
+                                    <i class="fas fa-edit"></i> {{__('trans.Add Item')}}
                                 </a>
                                 <a href="{{ route('resource-groups.edit', $resourceGroup->id) }}" class="btn btn-outline-success" style="width: 50%;">
-                                    <i class="fas fa-edit"></i> Update
+                                    <i class="fas fa-edit"></i> {{__('trans.Update')}}
                                 </a>
                                 <button onclick="confirmDelete({{ $resourceGroup->id }})" class="btn btn-outline-danger" style="width: 50%;">
-                                    <i class="fas fa-trash-alt"></i> Delete
+                                    <i class="fas fa-trash-alt"></i> {{__('trans.Delete')}}
                                 </button>
                             </div>
                             <form id="delete-form-{{ $resourceGroup->id }}"

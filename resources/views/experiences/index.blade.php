@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-6 col-md-6 text-end">
                 <h3>
-                    <a href="{{route('home')}}" class="btn btn-sm btn-secondary">Back</a>
+                    <a href="{{route('home')}}" class="btn btn-sm btn-secondary">{{__('trans.Back')}}</a>
                 </h3>
             </div>
         </div>
@@ -23,10 +23,10 @@
                             <div class="text-center mt-3">
                                 @if(!$tGroup->exams->isEmpty() && $tGroup->exams->first()->student_id == $student->id)
                                     <a href="{{route('doExperience', [$student->id, $tGroup->id])}}"
-                                       class="btn btn-success btn-sm">Continue</a>
+                                       class="btn btn-success btn-sm">{{__('trans.Continue')}}</a>
                                 @else
                                     <a href="{{route('doExperience', [$student->id, $tGroup->id])}}"
-                                       class="btn btn-primary btn-sm">Start</a>
+                                       class="btn btn-primary btn-sm">{{__('trans.Start')}}</a>
                                 @endif
                             </div>
                         </div>

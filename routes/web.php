@@ -11,14 +11,15 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 
-Auth::routes();
+//Auth::routes();
 
-//Auth::routes([
-//    'register' => false,
-//    'reset' => false,
-//]);
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+]);
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/lang/{lang}', [HomeController::class, 'changeLanguage'])->name('changeLanguage');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');

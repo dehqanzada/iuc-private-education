@@ -98,7 +98,7 @@ class ResourceController extends Controller
         $resource->save();
 
         return redirect()->route('resources.index')
-            ->with('success', 'Successfully recorded.');
+            ->with('success', __('trans.Successfully recorded'));
     }
 
 
@@ -163,7 +163,7 @@ class ResourceController extends Controller
         $resource->save();
 
         return redirect()->route('resources.index')
-            ->with('success', 'Resource updated successfully.');
+            ->with('success', __('trans.Resource updated successfully'));
     }
 
 
@@ -177,6 +177,6 @@ class ResourceController extends Controller
         $resource->delete();
 
         return redirect()->route('resources.index')
-            ->with('success', 'Successfully deleted.');
+            ->with('success', __('trans.Successfully deleted'));
     }
 }

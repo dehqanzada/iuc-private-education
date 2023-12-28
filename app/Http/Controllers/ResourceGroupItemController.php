@@ -69,6 +69,6 @@ class ResourceGroupItemController extends Controller
     {
         $student = ResourceGroupItem::findOrFail($id);
         $student->delete();
-        return back()->with('success', 'Successfully deleted.');
+        return back()->with('success', __('trans.Successfully deleted'));
     }
 }

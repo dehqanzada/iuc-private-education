@@ -220,12 +220,12 @@ class ExperienceController extends Controller
             $exam->delete();
             return response()->json([
                 'success' => true,
-                'message' => 'Resim başarıyla kaydedildi.'
+                'message' => __('trans.Resim başarıyla kaydedildi')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => $e->getMessage() // Hata mesajını burada döndürün.
+                'message' => $e->getMessage()
             ]);
         }
     }

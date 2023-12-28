@@ -4,11 +4,11 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-sm-6 col-md-6">
-                <h3>Exam Finish</h3>
+                <h3>{{__('trans.Exam Finished')}}</h3>
             </div>
             <div class="col-sm-6 col-md-6 text-end">
                 <h3>
-                    <a href="{{route('getReports', [$student->id, $tutorialGroup->id])}}" class="btn btn-sm btn-secondary">Report</a>
+                    <a href="{{route('getReports', [$student->id, $tutorialGroup->id])}}" class="btn btn-sm btn-secondary">{{__('trans.Report')}}</a>
                 </h3>
             </div>
         </div>
@@ -17,11 +17,11 @@
                 <div class="card shadow-sm congratulation-card">
                     <div class="congratulation-message">
                         @if(isset($student))
-                            <h1 class="display-4 text-center text-dark">Tebrikler, {{$student->name}}!</h1>
+                            <h1 class="display-4 text-center text-dark">{{__('trans.Congratulations')}}, {{$student->name}}!</h1>
                         @endif
                     </div>
                     @if(isset($tutorialGroup))
-                        <h2 class="text-center"> <strong>{{$tutorialGroup->name}}</strong> başarıyla tamamlandı!</h2>
+                        <h2 class="text-center"> <strong>{{$tutorialGroup->name}}</strong> {{__('trans.completed successfully')}}!</h2>
                     @endif
                     <div id="rain-container"></div>
                 </div>

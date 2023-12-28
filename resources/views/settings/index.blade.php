@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-md-12 d-flex justify-content-between align-items-center">
-                <h2>Settings</h2>
+                <h2>{{__('trans.Settings')}}</h2>
             </div>
         </div>
         <div class="card">
@@ -12,7 +12,34 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                     <tr>
-                        <th class="text-start">Text</th>
+                        <th class="text-start">{{__('trans.Application')}}</th>
+                        <th class="text-end"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-start">
+                            {{__('trans.Change application Language')}}
+                        </td>
+                        <td class="text-end">
+                            @if(app()->getLocale() === 'en')
+                                <a href="{{ route('changeLanguage', 'tr') }}" class="btn-sm btn btn-info">{{__('trans.Turkish')}}</a>
+                            @else
+                                <a href="{{ route('changeLanguage', 'en') }}" class="btn-sm btn btn-success">{{__('trans.English')}}</a>
+                            @endif
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="text-start">{{__('trans.Text')}}</th>
                         <th class="text-end"></th>
                     </tr>
                     </thead>
@@ -20,16 +47,16 @@
                     @foreach ($settings as $setting)
                         @if(!$setting->show_style)
                             <tr>
-                                <td class="text-start">{{ $setting->name }}</td>
+                                <td class="text-start">{{__('trans.'.$setting->name) }}</td>
                                 <td class="text-end">
                                     @php
-                                        $buttonText = $setting->status ? 'True' : 'False';
+                                        $buttonText = $setting->status ? 'Active' : 'Passive';
                                         $buttonClass = $setting->status ? 'btn-success' : 'btn-danger';
                                         $route = $setting->status ? 'settings.edit' : 'settings.show';
                                     @endphp
 
                                     <a href="{{ route($route, $setting->id) }}" class="btn btn-sm {{ $buttonClass }}">
-                                        {{ $buttonText }}
+                                        {{__('trans.'.$buttonText) }}
                                     </a>
                                 </td>
                             </tr>
@@ -46,7 +73,7 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                     <tr>
-                        <th class="text-start">Text style</th>
+                        <th class="text-start">{{__('trans.Text style')}}</th>
                         <th class="text-end"></th>
                     </tr>
                     </thead>
@@ -55,7 +82,7 @@
                         @foreach ($settings as $setting)
                             @if($setting->show_style)
                                 <tr>
-                                    <td class="text-start">{{ $setting->name }}</td>
+                                    <td class="text-start">{{__('trans.'.$setting->name) }}</td>
                                     <td class="text-end">
                                         <div class="col">
 
@@ -76,7 +103,7 @@
                                                     @foreach($colors ?? [] as $color)
                                                         <option
                                                             {{($setting->font_color == $color) ? 'selected':''}}
-                                                            value="{{$color}}">{{$color}}</option>
+                                                            value="{{$color}}">{{__('trans.'.$color) }}</option>
                                                     @endforeach
                                                 </select>
                                             @endif
@@ -89,7 +116,7 @@
                         <tr>
                             <td></td>
                             <td class="text-end">
-                                <button class="btn btn-sm btn-outline-success" type="submit">Update</button>
+                                <button class="btn btn-sm btn-outline-success" type="submit">{{__('trans.Update')}}</button>
                             </td>
                         </tr>
                     </form>

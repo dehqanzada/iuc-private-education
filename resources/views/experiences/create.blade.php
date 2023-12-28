@@ -10,8 +10,8 @@
                 </div>
                 <div class="col-sm-4 col-md-4 text-center">
                     <h5>
-                        Total: {{$tutorialGroup->resource_group_items_count}}
-                        Remaining: {{$remainingQuestionsCount}}
+                        {{__('trans.Total')}}: {{$tutorialGroup->resource_group_items_count}}
+                        {{__('trans.Remaining')}}: {{$remainingQuestionsCount}}
                     </h5>
                 </div>
                 <div class="col-sm-4 col-md-4 text-end">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4 text-end">
                     <a href="javascript:void(0)"
-                       class="btn btn-sm btn-success" onclick="saveCanvasToDatabase()">Next question</a>
+                       class="btn btn-sm btn-success" onclick="saveCanvasToDatabase()">{{__('trans.Next question')}}</a>
                 </div>
             </div>
 
@@ -304,10 +304,10 @@
                             window.location.href = `{{route('doExperience', [$student->id, $examItem->group_id, $examItem->id])}}`;
                         } else {
                             Swal.fire({
-                                title: 'Warning!',
-                                text: "Resmi kaydetme işlemi başarısız oldu.",
+                                title: '{{__("trans.Warning")}}!',
+                                text: "{{__("trans.The recording of the image failed")}}.",
                                 icon: 'error',
-                                confirmButtonText: 'Ok'
+                                confirmButtonText: '{{__("trans.Okay")}}'
                             });
                         }
 

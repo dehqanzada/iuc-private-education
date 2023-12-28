@@ -4,11 +4,11 @@
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col-sm-6 col-md-6">
-                <h3>Ongoing Examination</h3>
+                <h3>{{__('trans.Ongoing Examination')}}</h3>
             </div>
             <div class="col-sm-6 col-md-6 text-end">
                 <h3>
-                    Student: {{$totalUniqueStudents}}
+                    {{__('trans.Number of students')}}: {{$totalUniqueStudents}}
                 </h3>
             </div>
         </div>
@@ -18,8 +18,8 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                     <tr>
-                        <th class="text-start">Student name</th>
-                        <th class="text-start">Group name</th>
+                        <th class="text-start">{{__('trans.Student name')}}</th>
+                        <th class="text-start">{{__('trans.Group name')}}</th>
                         <th class="text-end"></th>
                     </tr>
                     </thead>
@@ -30,10 +30,10 @@
                                 <td class="text-start">{{ $exam->group_name }}</td>
                                 <td class="text-end">
                                     <a href="{{route('doExperience', [$exam->student_id, $exam->group_id])}}" class="btn btn-sm btn-info">
-                                        Continue with the exam
+                                        {{__('trans.Continue with the exam')}}
                                     </a>
                                     <button onclick="confirmDelete({{ $exam->exam_id }})" class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash-alt"></i> Delete
+                                        <i class="fas fa-trash-alt"></i> {{__('trans.Delete')}}
                                     </button>
                                     <form id="delete-form-{{ $exam->exam_id }}"
                                           action="{{ route('exams.destroy', $exam->exam_id) }}" method="POST"

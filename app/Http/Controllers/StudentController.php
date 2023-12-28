@@ -40,10 +40,10 @@ class StudentController extends Controller
             $student->name = $request->name;
             $student->save();
             DB::commit();
-            return redirect()->route('students.index')->with('success', 'Successfully recorded.');
+            return redirect()->route('students.index')->with('success', __('trans.Successfully recorded'));
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->route('students.index')->with('error', 'There was a problem saving the student.');
+            return redirect()->route('students.index')->with('error', __('trans.There was a problem saving the student'));
         }
     }
 
@@ -79,7 +79,7 @@ class StudentController extends Controller
         $student->save();
 
         return redirect()->route('students.index')
-            ->with('success', 'Successfully updated.');
+            ->with('success', __('trans.Successfully updated'));
     }
 
     public function destroy($id)
@@ -88,7 +88,7 @@ class StudentController extends Controller
         $student->delete();
 
         return redirect()->route('students.index')
-            ->with('success', 'Successfully deleted.');
+            ->with('success', __('trans.Successfully deleted'));
     }
 
 

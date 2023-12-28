@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -26,5 +27,12 @@ class HomeController extends Controller
     {
         $students = Student::withCount('experiences')->get();
         return view('home', compact('students'));
+    }
+
+    public function changeLanguage($lang)
+    {
+        App::setLocale($lang);
+        session()->put('locale', $lang);
+        return redirect()->back();
     }
 }
