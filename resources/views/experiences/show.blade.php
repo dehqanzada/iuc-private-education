@@ -55,7 +55,7 @@
         <div class="container mt-4">
             @foreach($student->experiences ?? [] as $experience)
                 <div class="card mb-3">
-                    <img src="{{ asset('storage/experiences/' . $experience->image_url) }}" alt="Resim">
+                    <img src="{{ asset('storage/experiences/' . $experience->image_url) }}"> {{$experience->image_url}}
 
 {{--                    <img src="{{ asset($experiences->image_url) }}" class="card-img-top" alt="Experience Image">--}}
                     <div class="card-body">

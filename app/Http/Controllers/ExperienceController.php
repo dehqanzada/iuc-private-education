@@ -20,7 +20,9 @@ class ExperienceController extends Controller
     {
         $studentId = $request->query('student_id');
         $student = Student::findOrFail($studentId);
-        $tutorialGroups = ResourceGroup::with('exams')->orderBy('id', 'desc')->get();
+        $tutorialGroups = ResourceGroup::with('exams')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('experiences.index', compact('student', 'tutorialGroups'));
     }

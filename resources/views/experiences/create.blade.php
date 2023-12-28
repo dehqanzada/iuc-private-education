@@ -88,7 +88,7 @@
 
             function drawLines() {
 
-                ctx.strokeStyle = 'black';
+                ctx.strokeStyle = "rgba(0, 0, 0, 0.1)";
                 ctx.lineWidth = 1;
                 // 55
                 // let firstLine = 0.390;
@@ -160,12 +160,9 @@
                     rastgeleHarf += harfler.charAt(Math.floor(Math.random() * harfler.length));
                 }
 
-                // ctx.font = '55px serif';
-                // ctx.font = fontSize+'px serif';
                 ctx.font = '{{$settings->font_size.'px'.' '.$settings->font_style}}';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillStyle = 'red';
                 ctx.fillStyle = '{{$settings->font_color}}';
                 ctx.fillText('{{$questionContent}}', canvas.width / 2, canvas.height / 2);
             }
@@ -243,6 +240,8 @@
             // Fare ile çizim yapma işlevleri
             function mouseDownHandler(e) {
                 if (e.button === 0) {
+                    ctx.strokeStyle = "black";
+                    ctx.lineWidth = 2;
                     drawing = true;
                     let pos = getMousePos(e);
                     ctx.beginPath();
@@ -252,6 +251,8 @@
 
             function mouseMoveHandler(e) {
                 if (drawing) {
+                    ctx.strokeStyle = "black";
+                    ctx.lineWidth = 2;
                     let pos = getMousePos(e);
                     ctx.lineTo(pos.x, pos.y);
                     ctx.stroke();
@@ -260,6 +261,8 @@
 
             function mouseUpHandler() {
                 if (drawing) {
+                    ctx.strokeStyle = "rgba(0, 0, 0, 0.1)";
+                    ctx.lineWidth = 1;
                     drawing = false;
                 }
             }
