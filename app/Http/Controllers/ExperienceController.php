@@ -40,18 +40,18 @@ class ExperienceController extends Controller
      */
     public function show($studentId, $groupId = null)
     {
-        if ($groupId !== null) {
-            $group = ResourceGroup::findOrFail($groupId);
-        } else {
-            $group = ResourceGroup::first();
-        }
+        $group = $groupId ? ResourceGroup::findOrFail($groupId) : ResourceGroup::first();
+
+        $student = Student::with(['experiences' => function ($query) use ($group) {
+            $query->where('group_id', $group->id)
+                ->orderBy('group_item_id', 'desc')
+                ->orderBy('created_at', 'desc');
+        }])->findOrFail($studentId);
 
         $students = Student::orderBy('name', 'asc')->get();
-        $student = Student::with('experiences')->findOrFail($studentId);
         $groups = ResourceGroup::orderBy('name', 'asc')->get();
 
-        return view('experiences.show',
-            compact('student', 'students', 'group', 'groups'));
+        return view('experiences.show', compact('student', 'students', 'group', 'groups'));
     }
 
     public function getReports(Request $request)

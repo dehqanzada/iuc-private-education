@@ -20,7 +20,8 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4 col-sm-4 text-start">
+                <div class="col-md-4 col-sm-4 text-start music-item"
+                     data-url="{{ isset($examItem->resourceGroupItem->resource->music_url) ? asset('storage/musics/' . $examItem->resourceGroupItem->resource->music_url) : '' }}">
                     <i class="bi bi-volume-up" style="font-size: 30px;"></i>
                 </div>
                 <div class="col-md-4 col-sm-4 text-center">
@@ -32,10 +33,10 @@
                 </div>
             </div>
 
-
+            <audio id="audioPlayer" controls style="display:none;"></audio>
             <canvas id="harfCanvas" width="800" height="200"></canvas>
 
-{{--            <button onclick="harfGoster()" class="btn btn-sm btn-outline-primary">Harf Göster</button>--}}
+            {{--            <button onclick="harfGoster()" class="btn btn-sm btn-outline-primary">Harf Göster</button>--}}
             {{--            <button onclick="saveCanvasAsPNG()">PNG Olarak Kaydet</button>--}}
 
 
@@ -43,8 +44,7 @@
     </div>
     <script>
 
-        function clearCanvas()
-        {
+        function clearCanvas() {
             let canvas = document.getElementById('harfCanvas');
             let ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -62,10 +62,10 @@
 
                 // Her çizgi için başlangıç ve bitiş oranları
                 const lineRatios = {
-                    firstLine: { start: 0.390, end: 0.360 },
-                    secondLine: { start: 0.450, end: 0.430 },
-                    thirdLine: { start: 0.570, end: 0.586 },
-                    forthLine: { start: 0.630, end: 0.656 }
+                    firstLine: {start: 0.390, end: 0.360},
+                    secondLine: {start: 0.450, end: 0.430},
+                    thirdLine: {start: 0.570, end: 0.586},
+                    forthLine: {start: 0.630, end: 0.656}
                 };
 
                 // Font boyutu farkına göre oranları ayarla
@@ -88,7 +88,7 @@
 
             function drawLines() {
 
-                ctx.strokeStyle = "rgba(0, 0, 0, 0.1)";
+                ctx.strokeStyle = "rgba(0, 0, 0, 0.2)";
                 ctx.lineWidth = 1;
                 // 55
                 // let firstLine = 0.390;
@@ -228,6 +228,7 @@
                 ctx.fillText('{{$questionContent}}', canvas.width / 2, canvas.height / 2);
             }
 */
+
             // Fare pozisyonunu hesaplama fonksiyonu
             function getMousePos(evt) {
                 let rect = canvas.getBoundingClientRect();
@@ -304,7 +305,7 @@
 
                         if (response.success) {
                             {{--window.location.href = `/admin/do-experience/{{$student->id}}/{{$examItem->group_id}}/{{$examItem->id}}`;--}}
-                            window.location.href = `{{route('doExperience', [$student->id, $examItem->group_id, $examItem->id])}}`;
+                                window.location.href = `{{route('doExperience', [$student->id, $examItem->group_id, $examItem->id])}}`;
                         } else {
                             Swal.fire({
                                 title: '{{__("trans.Warning")}}!',
@@ -350,6 +351,21 @@
             harfGoster();
         });
 
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var musicItems = document.querySelectorAll('.music-item');
+            musicItems.forEach(function (musicItem) {
+                musicItem.addEventListener('click', function (e) {
+                    if (e.target && e.target.nodeName === "I") {
+                        var musicUrl = this.getAttribute('data-url');
+                        var audioPlayer = document.getElementById('audioPlayer');
+                        audioPlayer.src = musicUrl;
+                        audioPlayer.play();
+                        // audioPlayer.style.display = 'block';
+                    }
+                });
+            });
+        });
     </script>
 @endsection
 

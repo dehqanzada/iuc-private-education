@@ -16,16 +16,17 @@
         </div>
 
 
-
         <div class="container mt-4">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form class="row align-items-center" action="{{ route('getReports', [$student->id, $group->id]) }}"
+                            <form class="row align-items-center"
+                                  action="{{ route('getReports', [$student->id, $group->id]) }}"
                                   method="get">
                                 <div class="col">
-                                    <label for="studentId" class="visually-hidden">{{__('trans.Choose Student')}}</label>
+                                    <label for="studentId"
+                                           class="visually-hidden">{{__('trans.Choose Student')}}</label>
                                     <select name="studentId" id="studentId" class="form-select">
                                         @foreach($students ?? [] as $stdnt)
                                             <option
@@ -55,9 +56,7 @@
         <div class="container mt-4">
             @foreach($student->experiences ?? [] as $experience)
                 <div class="card mb-3">
-                    <img src="{{ asset('storage/experiences/' . $experience->image_url) }}"> {{$experience->image_url}}
-
-{{--                    <img src="{{ asset($experiences->image_url) }}" class="card-img-top" alt="Experience Image">--}}
+                    <img src="{{ asset('storage/experiences/' . $experience->image_url) }}">
                     <div class="card-body">
                         <p class="card-text text-center">{{$experience->created_at->format('d/m/Y H:i')}}</p>
                     </div>
