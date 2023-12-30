@@ -29,38 +29,7 @@
         </div>
     </div>
 
-    <!-- Animasyonlu Yağmur Damlaları için JavaScript -->
-    <script>
-        function createRain() {
-            var rainContainer = document.getElementById('rain-container');
 
-            function performAction() {
-                for (var i = 0; i < 50; i++) { // 100 damla, sayıyı artırabilir veya azaltabilirsiniz
-                    var drop = document.createElement('div');
-                    drop.className = 'rain-drop';
-                    drop.style.left = Math.random() * window.innerWidth + 'px'; // Rastgele bir başlangıç pozisyonu
-                    rainContainer.appendChild(drop);
-                }
-            }
-
-            function startSequentialActions() {
-                for (let i = 0; i < 100; i++) {
-                    setTimeout(function() {
-                        performAction();
-                    }, i * 1000);
-                }
-            }
-            startSequentialActions();
-        }
-
-        window.onload = function() {
-            createRain();
-            // Animasyonu 5 saniye sonra durdur
-            setTimeout(function() {
-                document.getElementById('rain-container').innerHTML = '';
-            }, 5000);
-        };
-    </script>
 @endsection
 @section('css-style')
 
@@ -108,5 +77,41 @@
         .rain-drop:nth-child(even) { animation-delay: 0.5s; }
         .rain-drop:nth-child(3n) { animation-delay: 0.3s; }
     </style>
+
+@endsection
+
+@section('java-script')
+    <!-- Animasyonlu Yağmur Damlaları için JavaScript -->
+    <script>
+        function createRain() {
+            var rainContainer = document.getElementById('rain-container');
+
+            function performAction() {
+                for (var i = 0; i < 50; i++) { // 100 damla, sayıyı artırabilir veya azaltabilirsiniz
+                    var drop = document.createElement('div');
+                    drop.className = 'rain-drop';
+                    drop.style.left = Math.random() * window.innerWidth + 'px'; // Rastgele bir başlangıç pozisyonu
+                    rainContainer.appendChild(drop);
+                }
+            }
+
+            function startSequentialActions() {
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(function() {
+                        performAction();
+                    }, i * 1000);
+                }
+            }
+            startSequentialActions();
+        }
+
+        window.onload = function() {
+            createRain();
+            // Animasyonu 5 saniye sonra durdur
+            setTimeout(function() {
+                document.getElementById('rain-container').innerHTML = '';
+            }, 5000);
+        };
+    </script>
 
 @endsection

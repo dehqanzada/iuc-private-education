@@ -7,3 +7,12 @@
         </div>
     </div>
 @endsection
+
+@section('css-style')
+
+
+@endsection
+@section('java-script')
+
+
+@endsection

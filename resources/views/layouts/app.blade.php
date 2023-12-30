@@ -118,6 +118,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('java-script')
     <script>
         function confirmDelete(id) {
             Swal.fire({

@@ -74,6 +74,15 @@
     </div>
 
 
+
+
+@endsection
+@section('css-style')
+
+
+@endsection
+@section('java-script')
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var musicItems = document.querySelectorAll('.music-item');
@@ -90,5 +99,4 @@
             });
         });
     </script>
-
 @endsection

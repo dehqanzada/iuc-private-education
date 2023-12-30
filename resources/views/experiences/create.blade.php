@@ -42,6 +42,16 @@
 
         </div>
     </div>
+
+@endsection
+
+
+
+@section('css-style')
+
+
+@endsection
+@section('java-script')
     <script>
 
         function clearCanvas() {
@@ -238,6 +248,14 @@
                 };
             }
 
+            function getTouchPos(canvasDom, touchEvent) {
+                var rect = canvasDom.getBoundingClientRect();
+                return {
+                    x: touchEvent.touches[0].clientX - rect.left,
+                    y: touchEvent.touches[0].clientY - rect.top
+                };
+            }
+
             // Fare ile çizim yapma işlevleri
             function mouseDownHandler(e) {
                 if (e.button === 0) {
@@ -266,6 +284,30 @@
                     ctx.lineWidth = 1;
                     drawing = false;
                 }
+            }
+
+            // Dokunmatik olayları için ek fonksiyonlar
+            function touchStartHandler(e) {
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousedown", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            }
+
+            function touchMoveHandler(e) {
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousemove", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                canvas.dispatchEvent(mouseEvent);
+            }
+
+            function touchEndHandler(e) {
+                var mouseEvent = new MouseEvent("mouseup", {});
+                canvas.dispatchEvent(mouseEvent);
             }
 
             // Canvas'ı PNG olarak kaydetme fonksiyonu
@@ -346,6 +388,10 @@
             canvas.addEventListener('mousemove', mouseMoveHandler);
             canvas.addEventListener('mouseup', mouseUpHandler);
 
+            canvas.addEventListener("touchstart", touchStartHandler, false);
+            canvas.addEventListener("touchmove", touchMoveHandler, false);
+            canvas.addEventListener("touchend", touchEndHandler, false);
+
             // İlk çizgileri çiz ve harfi göster
             drawLines();
             harfGoster();
@@ -367,6 +413,5 @@
             });
         });
     </script>
+
 @endsection
-
-

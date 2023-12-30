@@ -67,12 +67,14 @@ class ResourceController extends Controller
         if ($request->form_type === 'right') {
             if ($request->hasFile('image')) {
                 $fileName = $request->file('image')->hashName();
-                $imagePath = Storage::disk('public')->putFileAs('images', $request->file('image'), $fileName);
+                $imagePath = Storage::disk('public')
+                    ->putFileAs('images', $request->file('image'), $fileName);
                 $resource->image_url = $fileName;
             }
             if ($request->hasFile('right_music')) {
                 $fileName = $request->file('right_music')->hashName();
-                $musicPath = Storage::disk('public')->putFileAs('musics', $request->file('right_music'), $fileName);
+                $musicPath = Storage::disk('public')
+                    ->putFileAs('musics', $request->file('right_music'), $fileName);
                 $resource->music_url = $fileName;
             }
             $resource->name = null;

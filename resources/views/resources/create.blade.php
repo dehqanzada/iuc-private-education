@@ -16,10 +16,10 @@
                                 <input type="text" class="form-control" id="name" name="name">
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label for="auto_voiceover" class="form-label">{{__('trans.Auto Voiceover')}}</label>
-                                <input type="checkbox" id="auto_voiceover" name="auto_voiceover" onchange="toggleMusicUpload()">
-                            </div>
+{{--                            <div class="form-group mb-3">--}}
+{{--                                <label for="auto_voiceover" class="form-label">{{__('trans.Auto Voiceover')}}</label>--}}
+{{--                                <input type="checkbox" id="auto_voiceover" name="auto_voiceover" onchange="toggleMusicUpload()">--}}
+{{--                            </div>--}}
 
                             <div class="form-group mb-3" id="leftMusicUploadField">
                                 <label for="left_music" class="form-label">{{__('trans.Music')}}</label>
@@ -34,32 +34,40 @@
             </div>
 
             <!-- Sağ Form -->
-            <div class="col-md-6">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-info text-white">{{__('trans.Right Form')}}</div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('resources.store') }}" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="form_type" value="right">
-                            <div class="form-group mb-3">
-                                <label for="image" class="form-label">{{__('trans.Image')}}</label>
-                                <input type="file" class="form-control" id="image" name="image">
-                            </div>
+{{--            <div class="col-md-6">--}}
+{{--                <div class="card shadow-sm">--}}
+{{--                    <div class="card-header bg-info text-white">{{__('trans.Right Form')}}</div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        <form method="POST" action="{{ route('resources.store') }}" enctype="multipart/form-data">--}}
+{{--                            @csrf--}}
+{{--                            <input type="hidden" name="form_type" value="right">--}}
+{{--                            <div class="form-group mb-3">--}}
+{{--                                <label for="image" class="form-label">{{__('trans.Image')}}</label>--}}
+{{--                                <input type="file" class="form-control" id="image" name="image">--}}
+{{--                            </div>--}}
 
-                            <div class="form-group mb-3">
-                                <label for="right_music" class="form-label">{{__('trans.Music')}}</label>
-                                <input type="file" class="form-control" id="right_music" name="right_music">
-                            </div>
+{{--                            <div class="form-group mb-3">--}}
+{{--                                <label for="right_music" class="form-label">{{__('trans.Music')}}</label>--}}
+{{--                                <input type="file" class="form-control" id="right_music" name="right_music">--}}
+{{--                            </div>--}}
 
-                            <button type="submit" class="btn btn-info">{{__('trans.Save')}}</button>
-                            <a href="{{ route('resources.index') }}" class="btn btn-secondary">{{__('trans.Back')}}</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
+{{--                            <button type="submit" class="btn btn-info">{{__('trans.Save')}}</button>--}}
+{{--                            <a href="{{ route('resources.index') }}" class="btn btn-secondary">{{__('trans.Back')}}</a>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 
+
+@endsection
+
+@section('css-style')
+
+
+@endsection
+@section('java-script')
     <script>
         function toggleMusicUpload() {
             var autoVoiceoverChecked = document.getElementById('auto_voiceover').checked;
@@ -72,4 +80,5 @@
             toggleMusicUpload(); // Sayfa yüklendiğinde ses dosyası alanını kontrol et
         });
     </script>
+
 @endsection

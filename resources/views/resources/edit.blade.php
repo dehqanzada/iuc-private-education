@@ -71,7 +71,15 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+@endsection
+@section('css-style')
+
+
+@endsection
+@section('java-script')
+
+{{--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
     <script>
         $(document).ready(function() {
             let auto_voiceover = $('#auto_voiceover');
