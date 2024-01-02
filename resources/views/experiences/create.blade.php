@@ -32,6 +32,7 @@
                        class="btn btn-sm btn-success" onclick="saveCanvasToDatabase()">{{__('trans.Next question')}}</a>
                 </div>
             </div>
+            <input type="range" id="lineWidth" min="1" max="10" value="2">
 
             <audio id="audioPlayer" controls style="display:none;"></audio>
             <canvas id="harfCanvas" width="800" height="200"></canvas>
@@ -65,6 +66,7 @@
             let canvas = document.getElementById('harfCanvas');
             let ctx = canvas.getContext('2d');
             let drawing = false;
+            let lineWidthControl = document.getElementById('lineWidth');
 
             function calculateLinePositions(fontSize) {
                 // İki boyut arasındaki fark
@@ -260,7 +262,7 @@
             function mouseDownHandler(e) {
                 if (e.button === 0) {
                     ctx.strokeStyle = "black";
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = lineWidthControl.value;
                     drawing = true;
                     let pos = getMousePos(e);
                     ctx.beginPath();
@@ -271,7 +273,7 @@
             function mouseMoveHandler(e) {
                 if (drawing) {
                     ctx.strokeStyle = "black";
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = lineWidthControl.value;
                     let pos = getMousePos(e);
                     ctx.lineTo(pos.x, pos.y);
                     ctx.stroke();
