@@ -18,6 +18,15 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    public function ogretmenStatusTeyidi(Request $request)
+    {
+        if ($request->password == 'iuc') {
+            session(['teacherSession' => true]);
+            return redirect()->route('home')->with('success', 'Statünüz onaylandı.');
+        } else {
+            return redirect()->route('home')->with('error', 'Yetkiniz bulunmamaktadır.');
+        }
+    }
     /**
      * Show the application dashboard.
      *

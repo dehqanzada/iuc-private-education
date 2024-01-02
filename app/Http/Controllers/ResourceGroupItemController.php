@@ -12,6 +12,9 @@ class ResourceGroupItemController extends Controller
      */
     public function index()
     {
+        if (!session('teacherSession')) {
+            return redirect()->route('home')->with('error', 'yetkiniz bulunmamaktadir');
+        }
         return view('resource-group-items');
     }
 

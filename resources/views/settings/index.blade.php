@@ -7,6 +7,34 @@
                 <h2>{{__('trans.Settings')}}</h2>
             </div>
         </div>
+        @if(!session('teacherSession'))
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead class="thead-light">
+                        <tr>
+                            <th class="text-start">Statü Teyyidi</th>
+                            <th class="text-end"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                            <form action="{{route('ogretmenStatusTeyidi')}}" method="post"> @csrf
+                                <td>
+                                    <input type="password" name="password" class="form-control" placeholder="enter password" required>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-success">Onayla</button>
+                                </td>
+                            </form>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
+        <br>
         <div class="card">
             <div class="card-body">
                 <table class="table table-hover">

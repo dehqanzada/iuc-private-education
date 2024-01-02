@@ -40,4 +40,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::post('/update-setting-style', [SettingController::class, 'updateSettingStyle'])->name('updateSettingStyle');
 
+    Route::post('/ogretmen-status-teyyidi', [HomeController::class, 'ogretmenStatusTeyidi'])->name('ogretmenStatusTeyidi');
 });

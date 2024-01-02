@@ -13,6 +13,9 @@ class ResourceGroupController extends Controller
      */
     public function index()
     {
+        if (!session('teacherSession')) {
+            return redirect()->route('home')->with('error', 'yetkiniz bulunmamaktadir');
+        }
        $resourceGroups = ResourceGroup::withCount('resourceGroupItems')->orderBy('id', 'desc')->get();
         return view('resource-groups.index', compact('resourceGroups'));
     }

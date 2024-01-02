@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Resource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ResourceController extends Controller
@@ -13,6 +14,9 @@ class ResourceController extends Controller
      */
     public function index()
     {
+        if (!session('teacherSession')) {
+            return redirect()->route('home')->with('error', 'yetkiniz bulunmamaktadir');
+        }
         $resources = Resource::orderBy('id', 'desc')->get();
         return view('resources.index', compact('resources'));
     }
