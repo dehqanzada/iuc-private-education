@@ -26,14 +26,18 @@
                 </div>
                 <div class="col-md-4 col-sm-4 text-center">
                     <i class="bi bi-eraser-fill text-primary" onclick="clearCanvas()" style="font-size: 30px;"></i>
+                    <i id="lockIcon" class="bi bi-lock-fill" style="font-size: 30px;"></i>
                 </div>
                 <div class="col-md-4 col-sm-4 text-end">
                     <a href="javascript:void(0)"
                        class="btn btn-sm btn-success" onclick="saveCanvasToDatabase()">{{__('trans.Next question')}}</a>
                 </div>
             </div>
+{{--            <button id="lockButton" class="btn btn-info">Ekranı Kilitle</button>--}}
+
             <input type="range" id="lineWidth" min="1" max="10" value="2">
 
+            <br>
             <audio id="audioPlayer" controls style="display:none;"></audio>
             <canvas id="harfCanvas" width="800" height="200"></canvas>
 
@@ -54,6 +58,46 @@
 @endsection
 @section('java-script')
     <script>
+
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const lockButton = document.getElementById('lockButton');
+        //     let isLocked = localStorage.getItem('isLocked') === 'true';
+        //
+        //     const toggleScrollLock = (lock) => {
+        //         isLocked = lock;
+        //         localStorage.setItem('isLocked', isLocked);
+        //         lockButton.textContent = isLocked ? 'Ekranın Kilidini Aç' : 'Ekranı Kilitle';
+        //         document.body.style.overflow = isLocked ? 'hidden' : 'auto';
+        //     };
+        //
+        //     lockButton.addEventListener('click', function () {
+        //         toggleScrollLock(!isLocked);
+        //     });
+        //
+        //     // Sayfa yüklendiğinde mevcut duruma göre ayarla
+        //     toggleScrollLock(isLocked);
+        // });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const lockIcon = document.getElementById('lockIcon');
+            let isLocked = localStorage.getItem('isLocked') === 'true';
+
+            const toggleScrollLock = (lock) => {
+                isLocked = lock;
+                localStorage.setItem('isLocked', isLocked);
+                lockIcon.className = isLocked ? 'bi bi-lock-fill' : 'bi bi-unlock-fill';
+                document.body.style.overflow = isLocked ? 'hidden' : 'auto';
+            };
+
+            lockIcon.addEventListener('click', function () {
+                toggleScrollLock(!isLocked);
+            });
+
+            // Sayfa yüklendiğinde mevcut duruma göre ayarla
+            toggleScrollLock(isLocked);
+        });
+
+
 
         function clearCanvas() {
             let canvas = document.getElementById('harfCanvas');
